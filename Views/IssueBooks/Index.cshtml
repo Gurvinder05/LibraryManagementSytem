@@ -1,0 +1,47 @@
+﻿@model IEnumerable<LibraryManagementSytem.BusinessLayer.IssueBook>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Book Issue</h1>
+
+<p>
+    <a class="bnr_btn" asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Books)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IssueDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Students)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Books.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IssueDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Students.Class)
+            </td>
+            <td>
+                <a class="bnr_btn" asp-action="Edit" asp-route-id="@item.IssueId">Edit</a> |
+                <a class="bnr_btn" asp-action="Details" asp-route-id="@item.IssueId">Details</a> |
+                <a class="bnr_btn" asp-action="Delete" asp-route-id="@item.IssueId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
